@@ -1,10 +1,12 @@
-from django.shortcuts import render
-from djnago.views.generic import ListView
+from djnago.views.generic import ListView, DetailView
 from .models import Post
 
 class PostList(ListView):
     model = Post
     ordering = '-pk'
+
+    class PostDetail(DetailView):
+        model = Post
 
 def index(request):
     posts = Post.objects.all().order_by('-pk')
